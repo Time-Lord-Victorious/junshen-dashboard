@@ -14,29 +14,72 @@ import Navbar from '$lib/Navbar.svelte';
 		<table class="table">
 		<thead>
 		  <tr>
-			<th scope="col">#</th>
-			<th scope="col">First</th>
-			<th scope="col">Last</th>
-			<th scope="col">Handle</th>
+			<th scope="col">Episode No.</th>
+			<th scope="col">Epsiode name</th>
+			<th scope="col">Part No.</th>
+			<th scope="col">Written by:</th>
 		  </tr>
 		</thead>
 		<tbody>
 		  <tr>
 			<th scope="row">1</th>
-			<td>Mark</td>
-			<td>Otto</td>
-			<td>@mdo</td>
+			<td>Doctor Who: Inferno from Space</td>
+			<td>Part 1</td>
+			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
 			<th scope="row">2</th>
-			<td>Jacob</td>
-			<td>Thornton</td>
-			<td>@fat</td>
+			<td>Doctor Who: Inferno from Space</td>
+			<td>Part 2</td>
+			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
 			<th scope="row">3</th>
-			<td colspan="2">Larry the Bird</td>
-			<td>@twitter</td>
+			<td>Doctor Who: the Grandmaster</td>
+			<td>Part 1</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+			<th scope="row">4</th>
+			<td>Doctor Who: the Grandmaster</td>
+			<td>Part 2</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+			<th scope="row">5</th>
+			<td>Doctor Who: The Plant</td>
+			<td>Full episode</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+			<th scope="row">6</th>
+			<td>Doctor Who: The Sontaran Gambit</td>
+			<td>Part 1</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+		  <th scope="row">7</th>
+			<td>Doctor Who: The Sontaran Gambit</td>
+			<td>Part 2</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+			<th scope="row">8</th>
+			<td>Doctor Who: The 6 Doctors</td>
+			<td>Part 1</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+			<th scope="row">9</th>
+			<td>Doctor Who: The 6 Doctors</td>
+			<td>Part 2</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+			<th scope="row">8</th>
+			<td>Doctor Who: The 6 Doctors</td>
+			<td>Part 3</td>
+			<td>Jun Shen Lee</td>
 		  </tr>
 		</tbody>
   </table>
