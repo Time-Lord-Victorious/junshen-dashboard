@@ -18,74 +18,79 @@ import Navbar from '$lib/Navbar.svelte';
 			<th scope="col">Epsiode name</th>
 			<th scope="col">Part No.</th>
 			<th scope="col">Written by:</th>
+			<th scope="col">Release</th>
 		  </tr>
 		</thead>
 		<tbody>
 		  <tr>
 			<th scope="row">1</th>
-			<td>Doctor Who Adventures: Inferno from Space</td>
+			<td>Doctor Who: Inferno from Space</td>
 			<td>Part 1</td>
 			<td>Jun Shen Lee</td>
+			<td>1st of May 8pm</td>
 		  </tr>
 		  <tr>
 			<th scope="row">2</th>
-			<td>Doctor Who Adventures: Inferno from Space</td>
+			<td>Doctor Who: Inferno from Space</td>
 			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
+			<td>15th of May 8pm</td>
 		  </tr>
 		  <tr>
 			<th scope="row">3</th>
-			<td>Doctor Who Adventures: Nursery Horrors</td>
-			<td>Full episode</td>
+			<td>Doctor Who: Peace and War</td>
+			<td>Part 1</td>
 			<td>Jun Shen Lee</td>
+			<td>1st of June 8pm</td>
 		  </tr>
 		  <tr>
 			<th scope="row">4</th>
-			<td>Doctor Who Adventures: Peace and War</td>
-			<td>Part 1</td>
+			<td>Doctor Who: Peace and War</td>
+			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
+			<td>15th of June 8pm</td>
 		  </tr>
 		  <tr>
 			<th scope="row">5</th>
-			<td>Doctor Who Adventures: Peace and War</td>
+			<td>The Ip Man Adventures 1</td>
+			<td>Part 1</td>
+			<td>Jun Shen Lee</td>
+			<td>1st of July 8pm</td>
+		  </tr>
+		  <tr>
+		  <th scope="row">5</th>
+			<td>The Ip Man Adventures 1</td>
 			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
+			<td>15th of July 8pm</td>
 		  </tr>
 		  <tr>
 			<th scope="row">6</th>
-			<td>The Ip Man Adventures 1</td>
+			<td>The Ip Man Adventures 2</td>
 			<td>Part 1</td>
 			<td>Jun Shen Lee</td>
+			<td>1st of August 8pm</td>
 		  </tr>
 		  <tr>
-		  <th scope="row">7</th>
-			<td>The Ip Man Adventures 1</td>
+			<th scope="row">7</th>
+			<td>The Ip Man Adventures 2</td>
 			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
+			<td>15th of August 8pm</td>
 		  </tr>
 		  <tr>
 			<th scope="row">8</th>
-			<td>The Ip Man Adventures 2</td>
-			<td>Part 1</td>
-			<td>Jun Shen Lee</td>
-		  </tr>
-		  <tr>
-			<th scope="row">9</th>
-			<td>The Ip Man Adventures 2</td>
-			<td>Part 2</td>
-			<td>Jun Shen Lee</td>
-		  </tr>
-		  <tr>
-			<th scope="row">10</th>
 			<td>The Ip Man Adventures 3</td>
 			<td>Part 1</td>
 			<td>Jun Shen Lee</td>
+			<td>1st of September 8pm</td>
 		  </tr>
 		  <tr>
-			<th scope="row">11</th>
+			<th scope="row">8</th>
 			<td>The Ip Man Adventures 3</td>
 			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
+			<td>15th of September 8pm</td>
 		  </tr>
 		</tbody>
   </table>

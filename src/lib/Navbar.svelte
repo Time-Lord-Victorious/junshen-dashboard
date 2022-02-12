@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-yellow">
+<nav class="navbar navbar-expand-lg navbar-success bg-yellow">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Wesley Studios</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
