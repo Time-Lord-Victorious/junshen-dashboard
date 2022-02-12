@@ -23,62 +23,68 @@ import Navbar from '$lib/Navbar.svelte';
 		<tbody>
 		  <tr>
 			<th scope="row">1</th>
-			<td>Doctor Who: Inferno from Space</td>
+			<td>Doctor Who Adventures: Inferno from Space</td>
 			<td>Part 1</td>
 			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
 			<th scope="row">2</th>
-			<td>Doctor Who: Inferno from Space</td>
+			<td>Doctor Who Adventures: Inferno from Space</td>
 			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
 			<th scope="row">3</th>
-			<td>Doctor Who: the Grandmaster</td>
-			<td>Part 1</td>
-			<td>Jun Shen Lee</td>
-		  </tr>
-		  <tr>
-			<th scope="row">4</th>
-			<td>Doctor Who: the Grandmaster</td>
-			<td>Part 2</td>
-			<td>Jun Shen Lee</td>
-		  </tr>
-		  <tr>
-			<th scope="row">5</th>
-			<td>Doctor Who: The Plant</td>
+			<td>Doctor Who Adventures: Nursery Horrors</td>
 			<td>Full episode</td>
 			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
+			<th scope="row">4</th>
+			<td>Doctor Who Adventures: Peace and War</td>
+			<td>Part 1</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+			<th scope="row">5</th>
+			<td>Doctor Who Adventures: Peace and War</td>
+			<td>Part 2</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
 			<th scope="row">6</th>
-			<td>Doctor Who: The Sontaran Gambit</td>
+			<td>The Ip Man Adventures 1</td>
 			<td>Part 1</td>
 			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
 		  <th scope="row">7</th>
-			<td>Doctor Who: The Sontaran Gambit</td>
+			<td>The Ip Man Adventures 1</td>
 			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
 			<th scope="row">8</th>
-			<td>Doctor Who: The 6 Doctors</td>
+			<td>The Ip Man Adventures 2</td>
 			<td>Part 1</td>
 			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
 			<th scope="row">9</th>
-			<td>Doctor Who: The 6 Doctors</td>
+			<td>The Ip Man Adventures 2</td>
 			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
 		  </tr>
 		  <tr>
-			<th scope="row">8</th>
-			<td>Doctor Who: The 6 Doctors</td>
-			<td>Part 3</td>
+			<th scope="row">10</th>
+			<td>The Ip Man Adventures 3</td>
+			<td>Part 1</td>
+			<td>Jun Shen Lee</td>
+		  </tr>
+		  <tr>
+			<th scope="row">11</th>
+			<td>The Ip Man Adventures 3</td>
+			<td>Part 2</td>
 			<td>Jun Shen Lee</td>
 		  </tr>
 		</tbody>
