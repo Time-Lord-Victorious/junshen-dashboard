@@ -216,7 +216,6 @@ import { space } from 'svelte/internal';
 					<td><button class="btn">{info.release}</button></td>
 				{/each}		
 		  </tr>
-			
 		  <tr>
 			<th scope="row">1</th>
 			<td>Doctor Who: Inferno from Space</td>
