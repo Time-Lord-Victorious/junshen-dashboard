@@ -1,6 +1,7 @@
 <script>
     import supabase from '$lib/db';
 import Navbar from '$lib/Navbar.svelte';
+import { space } from 'svelte/internal';
     async function logout() {
    	 const { error } = await supabase.auth.signOut();
 
@@ -179,6 +180,17 @@ import Navbar from '$lib/Navbar.svelte';
   	},
 	],
   };
+  let audioInfo={
+	  IndexNo1:[
+		  {
+			  epNo: 1,
+			  epName: "Doctor Who: Inferno from space",
+			  partNo: 1,
+			  writtenBy: "Jun Shen Lee",
+			  release: "1st of May 8pm"
+		  }
+	  ]
+  };
 
 </script>
 <Navbar/>
@@ -188,13 +200,23 @@ import Navbar from '$lib/Navbar.svelte';
 		<thead>
 		  <tr>
 			<th scope="col">Episode No.</th>
-			<th scope="col">Epsiode name</th>
+			<th scope="col">Episode name</th>
 			<th scope="col">Part No.</th>
 			<th scope="col">Written by:</th>
 			<th scope="col">Release</th>
 		  </tr>
 		</thead>
 		<tbody>
+			<tr>
+				<th scope="row">1</th>
+				{#each audioInfo.IndexNo1 as info,index }
+					<td><button class="btn">{info.epName}</button></td>
+					<td><button class="btn">{info.partNo}</button></td>
+					<td><button class="btn">{info.writtenBy}</button></td>
+					<td><button class="btn">{info.release}</button></td>
+				{/each}		
+		  </tr>
+			
 		  <tr>
 			<th scope="row">1</th>
 			<td>Doctor Who: Inferno from Space</td>
