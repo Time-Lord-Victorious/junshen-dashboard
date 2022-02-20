@@ -6,7 +6,26 @@ import Navbar from '$lib/Navbar.svelte';
 
    	 if (error) alert(error.message); // alert if error
     }
-	
+	let episodeList = [
+		{
+			name: "Doctor Who: Inferno from Space",
+			part: 1,
+			author: "Junshen",
+			date: "1st of May 8pm"
+		},
+		{
+			name: "Doctor Who: Inferno from Space",
+			part: 2,
+			author: "Junshen",
+			date: "15th of May 8pm" 
+		}
+	]
+	function addEpisode(){
+		episodeList = [
+    ...episodeList,
+    { name: "??", part: 1, author: "", date: ""}
+  ];
+	}
 </script>
 <Navbar/>
 
@@ -14,7 +33,6 @@ import Navbar from '$lib/Navbar.svelte';
 		<table class="table">
 		<thead>
 		  <tr>
-			<th scope="col">Episode No.</th>
 			<th scope="col">Epsiode name</th>
 			<th scope="col">Part No.</th>
 			<th scope="col">Written by:</th>
@@ -22,76 +40,17 @@ import Navbar from '$lib/Navbar.svelte';
 		  </tr>
 		</thead>
 		<tbody>
-		  <tr>
-			<th scope="row">1</th>
-			<td>Doctor Who: Inferno from Space</td>
-			<td>Part 1</td>
-			<td>Junshen</td>
-			<td>1st of May 8pm</td>
+		{#each episodeList as episode}
+		<tr>
+			<td>{episode.name}</td>
+			<td>{episode.part}</td>
+			<td>{episode.author}</td>
+			<td>{episode.date}</td>
 		  </tr>
-		  <tr>
-			<th scope="row">2</th>
-			<td>Doctor Who: Inferno from Space</td>
-			<td>Part 2</td>
-			<td>Junshen</td>
-			<td>15th of May 8pm</td>
-		  </tr>
-		  <tr>
-			<th scope="row">3</th>
-			<td>Doctor Who: Peace and War</td>
-			<td>Part 1</td>
-			<td>Junshen</td>
-			<td>1st of June 8pm</td>
-		  </tr>
-		  <tr>
-			<th scope="row">4</th>
-			<td>Doctor Who: Peace and War</td>
-			<td>Part 2</td>
-			<td>Jun Shen Lee</td>
-			<td>15th of June 8pm</td>
-		  </tr>
-		  <tr>
-			<th scope="row">5</th>
-			<td>The Ip Man Adventures 1</td>
-			<td>Part 1</td>
-			<td>Junshen</td>
-			<td>1st of July 8pm</td>
-		  </tr>
-		  <tr>
-		  <th scope="row">5</th>
-			<td>The Ip Man Adventures 1</td>
-			<td>Part 2</td>
-			<td>Junshen</td>
-			<td>15th of July 8pm</td>
-		  </tr>
-		  <tr>
-			<th scope="row">6</th>
-			<td>The Ip Man Adventures 2</td>
-			<td>Part 1</td>
-			<td>Junshen</td>
-			<td>1st of August 8pm</td>
-		  </tr>
-		  <tr>
-			<th scope="row">7</th>
-			<td>The Ip Man Adventures 2</td>
-			<td>Part 2</td>
-			<td>Junshen</td>
-			<td>15th of August 8pm</td>
-		  </tr>
-		  <tr>
-			<th scope="row">8</th>
-			<td>The Ip Man Adventures 3</td>
-			<td>Part 1</td>
-			<td>Junshen</td>
-			<td>1st of September 8pm</td>
-		  </tr>
-		  <tr>
-			<th scope="row">8</th>
-			<td>The Ip Man Adventures 3</td>
-			<td>Part 2</td>
-			<td>Junshen</td>
-			<td>15th of September 8pm</td>
-		  </tr>
+		{/each}
+		<tr>
+			<td><button class="btn btn-success" type="button" on:click={addEpisode}>+</button></td>
+		</tr>
 		</tbody>
   </table>
 </div>
