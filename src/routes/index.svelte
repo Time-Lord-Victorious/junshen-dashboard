@@ -18,7 +18,19 @@ import Navbar from '$lib/Navbar.svelte';
 			part: 2,
 			author: "Junshen",
 			date: "15th of May 8pm" 
-		}
+		},
+		{
+			name: "Doctor Who: Peace and War",
+			part: 1,
+			author: "Junshen",
+			date: "1st of June 8pm" 
+		},
+		{
+			name: "Doctor Who: Peace and War",
+			part: 2,
+			author: "Junshen",
+			date: "15th of June 8pm" 
+		},
 	]
 	function addEpisode(){
 		episodeList = [
