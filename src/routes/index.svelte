@@ -38,6 +38,24 @@ import Navbar from '$lib/Navbar.svelte';
     { name: "??", part: 1, author: "", date: ""}
   ];
 	}
+
+	function showEpisode(){
+
+	}
+
+	function deleteEpisode(){
+		episodeList.splice(index,1);
+		episodeList=episodeList;
+	}
+	function deletePart(){
+
+}
+function deleteAuthor(){
+
+}
+function deleteDate(){
+
+}
 </script>
 <Navbar/>
 
@@ -49,16 +67,20 @@ import Navbar from '$lib/Navbar.svelte';
 			<th scope="col">Part No.</th>
 			<th scope="col">Written by:</th>
 			<th scope="col">Release</th>
+			<th scope="col">Action</th>
 		  </tr>
 		</thead>
 		<tbody>
 		{#each episodeList as episode}
 		<tr>
+			<td>{episode.name}</td>
+			<td>{episode.part}</td>
+			<td>{episode.author}</td>
+			<td>{episode.date}</td>
 			<td>
-				<button data-bs-toggle="modal" data-bs-target="#editTitle">{episode.name}</button></td>
-			<td><button data-bs-toggle="modal" data-bs-target="#editPart">{episode.part}</button></td>
-			<td><button data-bs-toggle="modal" data-bs-target="#editAuthor">{episode.author}</button></td>
-			<td><button data-bs-toggle="modal" data-bs-target="#editDate">{episode.date}</button></td>
+				<button data-bs-toggle="modal" data-bs-target="#editRow">Edit</button>
+				<button data-bs-toggle="modal" data-bs-target="#deleteRow">Delete</button>
+			</td>
 		  </tr>
 		{/each}
 		<tr>
@@ -88,6 +110,7 @@ import Navbar from '$lib/Navbar.svelte';
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-danger">Delete</button>
 		  <button type="button" class="btn btn-primary">Save changes</button>
 		</div>
 	  </div>
@@ -110,6 +133,7 @@ import Navbar from '$lib/Navbar.svelte';
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-danger">Delete</button>
 		  <button type="button" class="btn btn-primary">Save changes</button>
 		</div>
 	  </div>
@@ -132,6 +156,7 @@ import Navbar from '$lib/Navbar.svelte';
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-danger">Delete</button>
 		  <button type="button" class="btn btn-primary">Save changes</button>
 		</div>
 	  </div>
@@ -154,6 +179,7 @@ import Navbar from '$lib/Navbar.svelte';
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-danger">Delete</button>
 		  <button type="button" class="btn btn-primary">Save changes</button>
 		</div>
 	  </div>
