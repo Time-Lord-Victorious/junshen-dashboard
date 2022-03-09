@@ -1,11 +1,13 @@
 <script>
     import supabase from '$lib/db';
-import Navbar from '$lib/Navbar.svelte';
-    async function logout() {
+	import Navbar from './Navbar.svelte'; 
+    
+	async function logout() {
    	 const { error } = await supabase.auth.signOut();
 
    	 if (error) alert(error.message); // alert if error
     }
+	
 	let episodeList = [
 		{
 			name: "Doctor Who: Inferno from Space",
@@ -32,30 +34,63 @@ import Navbar from '$lib/Navbar.svelte';
 			date: "15th of June 8pm" 
 		},
 	]
-	function addEpisode(){
-		episodeList = [
-    ...episodeList,
-    { name: "??", part: 1, author: "", date: ""}
-  ];
+	
+	function addEpisodeDetails(){
+		episodeList = [...episodeList,{name: "??", part: 1, author: "", date: ""}];
 	}
 
-	function showEpisode(){
+	let curName;
+	let curPart;
+	let curAuthor;
+	let curDate;
+	let curIndex;
 
+	function showEpisodeDetails(index,name,part,author,date){
+		curIndex=index;
+		curName=name;
+		curPart=part;
+		curAuthor=author;
+		curDate=date;
+		console.log(curName);
 	}
 
-	function deleteEpisode(){
+// Upsert entry
+async function saveEntry() {
+  const { error } = await supabase.from("episodeEntries").upsert(
+    {
+      user_id: supabase.auth.user().id,
+      detailsTable: episodeList,
+    },
+    { onConflict: "user_id" }
+  );
+  if (error) alert(error.message);
+}
+function setepisodeDetails(index, newName, newPart, newAuthor, newDate){
+
+	episodeList[index].name = newName
+	episodeList[index].part = newPart
+	episodeList[index].author = newAuthor
+	episodeList[index].date = newDate
+
+	saveEntry();
+};
+	function deleteEpisodeDetails(index){
 		episodeList.splice(index,1);
 		episodeList=episodeList;
+		saveEntry();
 	}
-	function deletePart(){
+	
+	// Get entries
+async function getEntries() {
+  const { data, error } = await supabase.from("episodeEntries").select();
+  if (error) alert(error.message);
 
+  if (data != "") {
+    episodeList = data[0].detailsTable;
+  }
 }
-function deleteAuthor(){
 
-}
-function deleteDate(){
-
-}
+getEntries();
 </script>
 <Navbar/>
 
@@ -71,26 +106,36 @@ function deleteDate(){
 		  </tr>
 		</thead>
 		<tbody>
-		{#each episodeList as episode}
+		{#each episodeList as episode,index}
 		<tr>
 			<td>{episode.name}</td>
 			<td>{episode.part}</td>
 			<td>{episode.author}</td>
 			<td>{episode.date}</td>
 			<td>
-				<button data-bs-toggle="modal" data-bs-target="#editRow">Edit</button>
-				<button data-bs-toggle="modal" data-bs-target="#deleteRow">Delete</button>
+				<button data-bs-toggle="modal" data-bs-target="#editRow" on:click={() =>
+					showEpisodeDetails(
+					 index,
+					  episode.name,
+					  episode.part,
+					  episode.author,
+					  episode.date
+					)}>Edit</button>
+				<button data-bs-toggle="modal" data-bs-target="#deleteRow" on:click={()=>{curIndex=index;}}>Delete</button>
 			</td>
 		  </tr>
 		{/each}
-		<tr>
-			<td><button class="btn btn-success" type="button" on:click={addEpisode}>+</button></td>
-		</tr>
 		</tbody>
   </table>
 </div>
+
+<!-- Add 1 more row for episode -->
+<section class="container text-center mb-2">
+    <button class="btn btn-success" on:click={addEpisodeDetails}>Add Episode</button>
+</section>	
+
 <!-- Sign Out -->
-<section class="container px-4 py-3 text-center">
+<section class="container text-center">
     <button class="btn btn-primary" on:click={logout}>Logout</button>
 </section>		
 
@@ -117,8 +162,8 @@ function deleteDate(){
 	</div>
   </div>
   
- <!-- Modal -->
- <div class="modal fade" id="editPart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <!-- Modal box for Edit -->
+ <div class="modal fade" id="editRow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header">
@@ -127,61 +172,51 @@ function deleteDate(){
 		</div>
 		<div class="modal-body">
 			<div class="input-group mb-3">
-				<span class="input-group-text" id="basic-addon1">New Part</span>
-				<input type="text" class="form-control" placeholder="New Part" aria-label="New Part" aria-describedby="basic-addon1">
-			  </div>
+				<span class="input-group-text w-25" id="basic-addon1">Ep Name</span>
+				<input type="text" class="form-control" placeholder="Episode Name" aria-label="Episode Name" aria-describedby="basic-addon1" bind:value={curName}>
+			</div>
+			<div class="input-group mb-3">
+				<span class="input-group-text w-25" id="basic-addon1">Part</span>
+				<input type="text" class="form-control" placeholder="Part" aria-label="Part" aria-describedby="basic-addon1" bind:value={curPart}>
+			</div>
+			<div class="input-group mb-3">
+				<span class="input-group-text w-25" id="basic-addon1">Written by</span>
+				<input type="text" class="form-control" placeholder="Author" aria-label="Author" aria-describedby="basic-addon1" bind:value={curAuthor}>
+			</div>
+			<div class="input-group mb-3">
+				<span class="input-group-text w-25" id="basic-addon1">Release Date</span>
+				<input type="text" class="form-control" placeholder="Release Date" aria-label="Release Date" aria-describedby="basic-addon1" bind:value={curDate}>
+			</div>
+
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-danger">Delete</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
+		  <button type="button" class="btn btn-primary" on:click={()=>{setepisodeDetails(curIndex, curName, curPart, curAuthor, curDate)}} data-bs-dismiss="modal">Save changes</button>
 		</div>
 	  </div>
 	</div>
   </div>
 
-   <!-- Modal -->
-<div class="modal fade" id="editAuthor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Edit Information</h5>
-		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-		<div class="modal-body">
-			<div class="input-group mb-3">
-				<span class="input-group-text" id="basic-addon1">New Author</span>
-				<input type="text" class="form-control" placeholder="New Author" aria-label="New Author" aria-describedby="basic-addon1">
-			  </div>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-danger">Delete</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
+   <!-- Modal box for Delete row -->
+   <div class="modal fade" id="deleteRow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Delete Information</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+				<p>Are you sure you would like to delete this episode?</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-danger" data-bs-dismiss="modal" on:click={()=>{
+				deleteEpisodeDetails(curIndex);
+			}}>Delete</button>
+		  </div>
 		</div>
 	  </div>
 	</div>
-  </div>
+  
 
-   <!-- Modal -->
-<div class="modal fade" id="editDate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Edit Information</h5>
-		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-		<div class="modal-body">
-			<div class="input-group mb-3">
-				<span class="input-group-text" id="basic-addon1">New Date</span>
-				<input type="text" class="form-control" placeholder="New Date" aria-label="New Date" aria-describedby="basic-addon1">
-			  </div>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-danger">Delete</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
-		</div>
-	  </div>
-	</div>
-  </div>
+
